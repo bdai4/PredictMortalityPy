@@ -5,11 +5,8 @@ def readData():
 
     PatientsList = list()
     for current_file in (dataFile):
-        with open(current_file) as f:
-            PatientsList.append(f.readlines())
+        f = open(current_file, 'r').read().splitlines()
+        f[0] = f[0].split(',')
+        PatientsList.append(f)
 
     return PatientsList;
-
-listTest = readData()
-print(len(listTest))
-print(listTest[0])
