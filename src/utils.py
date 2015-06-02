@@ -12,9 +12,14 @@ def readData():
         for index, value in enumerate(f):
             if index != 0:
                 temp = f[index].split(',')
-                patient["Time"].append(temp[0])
+                patient["Time"].append(convertTime(temp[0]))
                 patient["Parameter"].append(temp[1])
                 patient["Value"].append(temp[2])
         patientsList.append(patient)
 
     return patientsList
+
+
+def convertTime(temp):
+    hour, minutes = temp.split(':')
+    return int((hour * 60) + minutes)
